@@ -1,0 +1,53 @@
+package phonenumberproject;
+
+import java.util.Scanner;
+import java.util.Random;
+
+/**
+ *
+ * @author mamon2027
+ */
+public class PhoneNumberProject {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Random generator = new Random();
+
+        System.out.println("Enter P to generate a phone number or R to roll the dice:");
+
+        // Infinite loop: keeps waiting for input
+        while (true) {
+            String input = scan.next();
+
+            // Only generate a number if the user typed "p" or "P"
+            if (input.equalsIgnoreCase("p")) {
+                // First part: 3 digits (0-7)
+                int digit1 = generator.nextInt(8);
+                int digit11 = generator.nextInt(8);
+                int digit111 = generator.nextInt(8);
+                String partOne = String.valueOf(digit1) + String.valueOf(digit11) + String.valueOf(digit111);
+
+                // Second part: range 0 to 655 (3 digits)
+                int iniPartTwo = generator.nextInt(656);
+                String partTwo = String.format("%03d", iniPartTwo);
+
+                // Third part: range 0 to 9999 (4 digits)
+                int iniPartThree = generator.nextInt(10000);
+                String partThree = String.format("%04d", iniPartThree);
+
+                // Output formatted phone number
+                System.out.println(partOne + "-" + partTwo + "-" + partThree);
+                System.out.println("Press P again to generate another number or R to roll the dice:");
+            } 
+            //User input
+            else if (input.equalsIgnoreCase("r")) {
+                //generates the number 1 - 6
+                int diceRoll = generator.nextInt(6) + 1;
+
+                //prints digits to system
+                System.out.println(diceRoll);
+                System.out.println("Press R to roll the dice again or P to generate a phone number:");
+            }
+        }
+    }
+}
