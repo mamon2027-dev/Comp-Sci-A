@@ -1,0 +1,114 @@
+package mathassignment;
+
+import java.util.Scanner;
+import java.util.Random;
+
+/**
+ *
+ * @author mamon2027
+ */
+public class MathAssignment {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        //This code is to make the scanner work
+        Scanner input = new Scanner(System.in);
+        Random random = new Random();
+
+        
+        // Generate a random Numbr from 0-90
+        int number = random.nextInt(91);
+
+        double radians = Math.toRadians(number);
+
+        double sine = Math.sin(radians);
+        double cosine = Math.cos(radians);
+        double tangent = Math.tan(radians);
+
+        System.out.println("Number: " + number
+                + " Sine: " + roundAvoid(sine, 3)
+                + " Cosine: " + roundAvoid(cosine, 3)
+                + " Tangent: " + roundAvoid(tangent, 3));
+
+
+        // Generate a number from 1.0 to 20.0 as radius, and find area and volume
+        double radius = 1.0 + (20.0 - 1.0) * random.nextDouble();
+
+        double area = Math.PI * Math.pow(radius, 2);
+
+        double volume = (4.0 / 3.0) * Math.PI
+                * Math.pow(radius, 3);
+
+        System.out.println();
+        System.out.println("Radius: " + roundAvoid(radius, 3));
+        System.out.println("Circle Area: " + roundAvoid(area, 3));
+        System.out.println("Sphere Volume: " + roundAvoid(volume, 3));
+
+
+        //Generate a number from 100,000,000.0 to 100,000,000,000.0
+        //Display Square root
+        //Display Natural Log
+        //Display Log10
+
+        double largeNumber = 100000000.0
+                + (100000000000.0 - 100000000.0)
+                * random.nextDouble();
+
+        double squareRoot = Math.sqrt(largeNumber);
+        double naturalLog = Math.log(largeNumber);
+        double log10 = Math.log10(largeNumber);
+
+        System.out.println();
+        System.out.println("Large Number: "
+                + roundAvoid(largeNumber, 5));
+
+        System.out.println("Square Root: "
+                + roundAvoid(squareRoot, 5));
+
+        System.out.println("Natural Log: "
+                + roundAvoid(naturalLog, 5));
+
+        System.out.println("Log10: "
+                + roundAvoid(log10, 5));
+
+
+        //Calculate the Mass using the E = mc^2
+        double speedOfLight = 299792458.0;
+
+        double massGrams = (largeNumber
+                / Math.pow(speedOfLight, 2)) * 1000;
+
+        System.out.println();
+        System.out.print("Enter number of decimal places for mass: ");
+
+        int massPlaces = input.nextInt();
+
+        System.out.println("Mass Required (grams): "
+                + roundAvoid(massGrams, massPlaces));
+
+
+        //Enters a real number and an integer, set the number to the power of the integer
+        System.out.println();
+        System.out.print("Enter a real number: ");
+        double base = input.nextDouble();
+        System.out.print("Enter an integer: ");
+        int exponent = input.nextInt();
+        System.out.print("Enter number of decimal places: ");
+        int decimalPlaces = input.nextInt();
+        double result = Math.pow(base, exponent);
+        System.out.println("Result: "
+                + roundAvoid(result, decimalPlaces));
+
+        input.close();
+    }
+
+    //Round numbers
+    public static double roundAvoid(double value, int places) {
+
+        double scale = Math.pow(10, places);
+
+        return Math.round(value * scale) / scale;
+    }
+}
