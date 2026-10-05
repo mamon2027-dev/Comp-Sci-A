@@ -1,0 +1,95 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package numberformatassignment;
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author mamon2027
+ */
+public class NumberFormatAssignment {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        // Calculate percentage of girls and boys
+        System.out.print("Enter total number of students: ");
+        int totalStudents = input.nextInt();
+
+        System.out.print("Enter number of girls: ");
+        int girls = input.nextInt();
+
+        int boys = totalStudents - girls;
+
+        double girlsPercent = (double) girls / totalStudents;
+        double boysPercent = (double) boys / totalStudents;
+
+        NumberFormat percent = NumberFormat.getPercentInstance();
+        percent.setMaximumFractionDigits(2);
+
+        System.out.println("Girls: " + percent.format(girlsPercent));
+        System.out.println("Boys: " + percent.format(boysPercent));
+
+        // Convert the Dollar amount to pounds and euros
+        System.out.print("\nEnter amount in Dollars and Cents: $");
+        double dollars = input.nextDouble();
+
+        double pounds = dollars * 0.75;
+        double euros = dollars * 0.86;
+
+        NumberFormat british = NumberFormat.getCurrencyInstance(Locale.UK);
+        NumberFormat european = NumberFormat.getCurrencyInstance(Locale.US);
+
+        // Replace the symbols that don't work with GBP and EUR
+        String poundsFormatted = british.format(pounds)
+                .replace("£", "GBP ");
+
+        String eurosFormatted = european.format(euros)
+                .replace("$", "EUR ");
+
+        System.out.println("Exchange rate: $1 = GBP 0.75");
+        System.out.println("Pounds: " + poundsFormatted);
+
+        System.out.println("Exchange rate: $1 = EUR 0.86");
+        System.out.println("Euros: " + eurosFormatted);
+
+        // Format Pi based on amount of decimals
+        System.out.print("\nEnter number of decimal places for Pi (0-15): ");
+        int places = input.nextInt();
+
+        String pattern = "0.";
+
+        for (int i = 0; i < places; i++) {
+            pattern += "0";
+        }
+
+        if (places == 0) {
+            pattern = "0";
+        }
+
+        DecimalFormat piFormat = new DecimalFormat(pattern);
+
+        System.out.println("Pi: " + piFormat.format(Math.PI));
+
+        // Generate random decimal Number
+        Random random = new Random();
+
+        long randomNumber = 100000000L
+                + (long) (random.nextDouble() * 998999999999999999L);
+
+        System.out.println("\nRandom number: " + randomNumber);
+
+        input.close();
+    }
+}
