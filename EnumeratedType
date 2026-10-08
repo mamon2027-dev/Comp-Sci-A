@@ -1,0 +1,67 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package enumerated.type;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author mamon2027
+ */
+public class EnumeratedType {
+
+    enum Day {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY,
+        FRIDAY, SATURDAY, SUNDAY
+    }
+
+    enum Month {
+        JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE,
+        JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        //Print the days of the week
+        System.out.println("Days of the Week:");
+
+        for (Day day : Day.values()) {
+            System.out.println((day.ordinal() + 1) + ": " + day);
+        }
+
+        System.out.println();
+
+        //Print the months of the year
+        System.out.println("Months of the Year:");
+
+        for (Month month : Month.values()) {
+            System.out.println((month.ordinal() + 1) + ": " + month);
+        }
+
+        System.out.println();
+
+        //CCHS username input, find the graduation year, the year after, and the year in binary
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter your CCHS username: ");
+        String username = input.nextLine();
+
+        String yearString = username.substring(username.length() - 4);
+
+        int graduationYear = Integer.parseInt(yearString);
+
+        System.out.println("Your graduation year is: " + graduationYear);
+        System.out.println("The next year after your graduation year is: "
+                + (graduationYear + 1));
+
+        System.out.println("In computer language, you graduate in: "
+                + Integer.toBinaryString(graduationYear));
+
+        input.close();
+    }
+}
