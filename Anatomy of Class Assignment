@@ -1,0 +1,107 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package anatomyofaclassassignment;
+
+public class AnatomyOfAClassAssignment {
+
+    public static void main(String[] args) {
+        
+        //1) What is the difference between a class and an object?
+        //A class is the blueprint for the code that describes what something has to do, and an object is an instance from that class
+        
+        //2) What happens when you pass an object to a print or println method?
+        // The object is converted into a tostring method to display it.
+        
+        //3) What is the scope of a variable in a method? In a class?
+        //A variable inside a method is used locally within that method, and the variable in a class is global to the entire code
+        
+        //Create the base car as a template for the other cars.
+        Car testCar = new Car();
+
+        System.out.println("Base Car:");
+        System.out.println(testCar);
+
+        //Write the facts about other cars and addign them to a variable
+        Car vwBug = new Car("VW Bug", 60, 85.0, 25000.00);
+        Car toyotaPrius = new Car("Toyota Prius", 194, 112.0, 28000.00);
+        Car bmwI8 = new Car("BMW i8", 369, 155.0, 147500.00);
+        Car teslaModel3 = new Car("Tesla Model 3", 510, 162.0, 42000.00);
+
+        //Print the car facts
+        System.out.println("\nCar Details:");
+        System.out.println(vwBug);
+        System.out.println(toyotaPrius);
+        System.out.println(bmwI8);
+        System.out.println(teslaModel3);
+    }
+}
+
+//The Car Class
+class Car {
+
+    // Variables
+    private String carBrand;
+    private int enginePower;
+    private double maxSpeed;
+    private double price;
+
+    // Default constructor
+    public Car() {
+        carBrand = "Unknown";
+        enginePower = 0;
+        maxSpeed = 0.0;
+        price = 0.0;
+    }
+
+    //make a constructor with parameters
+    public Car(String carBrand, int enginePower,
+               double maxSpeed, double price) {
+        this.carBrand = carBrand;
+        this.enginePower = enginePower;
+        this.maxSpeed = maxSpeed;
+        this.price = price;
+    }
+
+    public String getCarBrand() {
+        return carBrand;
+    }
+
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
+    }
+
+    public int getEnginePower() {
+        return enginePower;
+    }
+
+    public void setEnginePower(int enginePower) {
+        this.enginePower = enginePower;
+    }
+
+    public double getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(double maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    //method for toString
+    @Override
+    public String toString() {
+        return "Car Brand: " + carBrand
+                + ", Engine Power: " + enginePower + " HP"
+                + ", Max Speed: " + maxSpeed + " MPH"
+                + ", Price: $" + String.format("%.2f", price);
+    }
+}
