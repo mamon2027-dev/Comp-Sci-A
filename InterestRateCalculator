@@ -1,0 +1,66 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package interest.rate.calculator;
+
+
+import java.util.Scanner;
+import java.text.NumberFormat;
+
+/**
+ *
+ * @author mamon2027
+ */
+public class InterestRateCalculator {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        
+        //Putting inputs in the console
+        double amount;
+        int months;
+        System.out.println("Enter a financial amount:");
+        amount = scan.nextDouble();
+        System.out.println("Enter how many months you have to pay:");
+        months = scan.nextInt();
+        
+        InterRateCalc calculator = 
+                new InterRateCalc(months);
+        double monthly = calculator.calculateMonthlyPayment(amount);
+        double total = monthly * months;
+        
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        NumberFormat percent = NumberFormat.getPercentInstance();
+        percent.setMaximumFractionDigits(2);
+        
+        System.out.println("Repayment:");
+        System.out.println("Interest Rate: " + percent.format(InterRateCalc.RATE));
+        System.out.println("Monthly Payment: " + currency.format(monthly));
+        System.out.println("Total: " + currency.format(total));
+        
+    }
+    
+}
+
+//Identifying RATE of interest and applying it to money monthly
+class InterRateCalc{
+    
+    public static double RATE = 0.05;
+    private int months;
+    public InterRateCalc(int m){
+        //System.out.println("Months: " + m);
+        months = m;
+    }
+    public double calculateMonthlyPayment(double amount){
+        //System.out.println("Amount: " + amount);
+        double base = amount/months;
+        //System.out.println("base: " + base);
+        double monthly = base*(1 + RATE);
+        
+        return monthly;
+    }
+}
