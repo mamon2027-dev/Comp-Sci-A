@@ -1,0 +1,95 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package coursedetails;
+
+/**
+ *
+ * @author mamon2027
+ */
+public class CourseDetails {
+
+    public static void main(String[] args) {
+        
+        //Class 1
+        Course course1 = new Course("Computer Science", "AP CS A", 97, "Mr. Nelson");
+
+        //Class 2
+        Course course2 = new Course("Math");
+        course2.setCourseCode("AP Calc BC");
+        course2.setPointsTotal(90);
+        course2.setInstructorName("Mr. Dahms");
+
+        //Class 3
+        Course course3 = new Course("Physics", "AP Physics 1", 94, "Mrs. Rafie");
+        course3.setPointsTotal(94);
+
+        //Print the courses
+        System.out.println();
+        System.out.println(course1);
+        System.out.println();
+        System.out.println(course2);
+        System.out.println();
+        System.out.println(course3);
+        double totalGrade = course1.getPointsTotal()
+                + course2.getPointsTotal()
+                + course3.getPointsTotal();
+        double averageGrade = Math.round(totalGrade / 3.0);
+
+        System.out.println("Total Points for all classes: " + totalGrade);
+        System.out.println("Average Points: " + averageGrade);
+    }
+}
+
+class Course {
+
+    private String courseTitle;
+    private String courseCode;
+    private int pointsTotal;
+    private String instructorName;
+
+    //Assign each variable
+    public Course(String title, String code, int points, String instructor) {
+        courseTitle = title;
+        courseCode = code;
+        pointsTotal = points;
+        instructorName = instructor;
+    }
+
+
+    public Course(String title) {
+        courseTitle = title;
+    }
+
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+    public String getCourseCode() {
+        return courseCode;
+    }
+    public int getPointsTotal() {
+        return pointsTotal;
+    }
+    public String getInstructorName() {
+        return instructorName;
+    }
+    public void setCourseTitle(String title) {
+        courseTitle = title;
+    }
+    public void setCourseCode(String code) {
+        courseCode = code;
+    }
+    public void setPointsTotal(int points) {
+        pointsTotal = points;
+    }
+    public void setInstructorName(String instructor) {
+        instructorName = instructor;
+    }
+    public String toString() {
+        return "Class Title: " + courseTitle
+                + "\nClass Code: " + courseCode
+                + "\nTotal Points: " + pointsTotal
+                + "\nTeacher: " + instructorName;
+    }
+}
