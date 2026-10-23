@@ -1,0 +1,55 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package leapyearassignment;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author mamon2027
+ */
+public class LeapYearAssignment {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        //Set up scanner
+        Scanner scan = new Scanner(System.in);
+       
+        
+        //Evaluate if a valid year
+        boolean isValidYear = false;
+        System.out.println("Input a year: ");
+        final int MIN_YEAR = 1582;
+        int year = scan.nextInt();
+      
+        boolean isLeapYear = false;
+        final int LEAP_INTEGER = 4;
+        final int LEAP_INTEGER2 = 100;
+        final int LEAP_INTEGER3 = 400;
+        
+        if (year <= 1582){
+            isValidYear = false;
+            System.out.println("That is not a valid year!");
+        }
+        //Evaluate if a leap Year
+        if((year % LEAP_INTEGER == 0) && (year % LEAP_INTEGER2 != 0) || (year % LEAP_INTEGER3 == 0)){
+            isLeapYear = true;
+            System.out.println("That is a leap year!");
+        }else{
+            isLeapYear = false;
+            System.out.println("That is not a leap year...");
+                    
+        }
+                
+                
+            
+        
+           
+            
+            
+        }
+    }
