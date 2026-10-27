@@ -1,0 +1,100 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package mystore;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author mamon2027
+ */
+public class MyStore {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        final double MAX_BUDGET = 250.00;
+        Scanner input = new Scanner(System.in);
+
+        double total = 0.00;
+        int count = 0;
+
+        while (true) {
+
+            System.out.println("Enter an item to buy (or type Done to finish):");
+            String name = input.nextLine();
+
+            if (name.equalsIgnoreCase("Done")) {
+                break;
+            }
+
+            Item item = new Item();
+            item.setStrName(name);
+            
+               //Assign price for each item
+            if (name.equalsIgnoreCase("T Shirt")) {
+                item.setDblPrice(29.99);
+            } else if (name.equalsIgnoreCase("Shoes")) {
+                item.setDblPrice(125.99);
+            } else if (name.equalsIgnoreCase("Jeans")) {
+                item.setDblPrice(60.99);
+            } else if (name.equalsIgnoreCase("Jacket")) {
+                item.setDblPrice(250.00);
+            } else if (name.equalsIgnoreCase("Hat")) {
+                item.setDblPrice(25.99);
+            } else if (name.equalsIgnoreCase("Shorts")) {
+                item.setDblPrice(75.99);
+            } else if (name.equalsIgnoreCase("Blouse")) {
+                item.setDblPrice(88.99);
+            } else {
+                System.out.println("Invalid item. Please try again.");
+                continue;
+            }
+            //budget calculation
+            if (total + item.getDblPrice() > MAX_BUDGET) {
+                System.out.println("Warning: This item would put you over your $250.00 budget!");
+                System.out.println("You cannot purchase this item.");
+            } else {
+                total = total + item.getDblPrice();
+                count++;
+
+                System.out.println(item.toString());
+                System.out.println("Items purchased: " + count);
+                System.out.printf("Total spent: $%.2f%n", total);
+            }
+        }
+        //print out replies
+        System.out.println("Shopping finished!");
+        System.out.println("Total items purchased: " + count);
+        System.out.printf("Total spent: $%.2f%n", total);
+    }
+}
+
+class Item {
+
+    private String strName;
+    private double dblPrice;
+    public String getStrName() {
+        return strName;
+    }
+
+    public void setStrName(String name) {
+        strName = name;
+    }
+
+    public double getDblPrice() {
+        return dblPrice;
+    }
+
+    public void setDblPrice(double price) {
+        dblPrice = price;
+    }
+
+    public String toString() {
+        return "Item: " + strName + ", Price: " + String.format("%.2f", dblPrice);
+    }
+}
