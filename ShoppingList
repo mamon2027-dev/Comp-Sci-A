@@ -1,0 +1,96 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package shoppinglist;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author mamon2027
+ */
+public class ShoppingList {
+
+    //make the class for item and price
+    static class UserItems {
+        String item;
+        double price;
+
+        public UserItems(String item, double price) {
+            this.item = item;
+            this.price = price;
+        }
+
+        public String toString() {
+            return item + " - $" + price;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+
+        //Make the List
+        ArrayList shopList = new ArrayList();
+
+        //Get items with a loop
+        System.out.print("How many items? ");
+        int amount = scan.nextInt();
+        scan.nextLine();
+
+        int j = 0;
+
+        while (j < amount) {
+            System.out.print("Enter item: ");
+            String item = scan.nextLine();
+
+            System.out.print("Enter price: ");
+            double price = scan.nextDouble();
+            scan.nextLine();
+
+            UserItems newItem = new UserItems(item, price);
+            shopList.add(newItem);
+            j++;
+        }
+
+        //Display list
+        System.out.println("\nShopping List:");
+
+        j = 0;
+        double total = 0;
+
+        while (j < shopList.size()) {
+            System.out.println((j + 1) + ". " + shopList.get(j));
+            total += ((UserItems) shopList.get(j)).price;
+            j++;
+        }
+
+        System.out.println("Total: $" + total);
+
+        //Remove item
+        System.out.print("\nEnter the number of the item to remove: ");
+        int remove = scan.nextInt();
+
+        if (remove >= 1 && remove <= shopList.size()) {
+            shopList.remove(remove - 1);
+        }
+
+        //Display new list
+        System.out.println("\nUpdated Shopping List:");
+
+        j = 0;
+        total = 0;
+
+        while (j < shopList.size()) {
+            System.out.println((j + 1) + ". " + shopList.get(j));
+            total += ((UserItems) shopList.get(j)).price;
+            j++;
+        }
+
+        System.out.println("New Total: $" + total);
+
+        scan.close();
+    }
+}
